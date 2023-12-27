@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\Api\Auth\AuthApiController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => response()->json(['message' => 'Hello World']));
+
+Route::post('/auth', [AuthApiController::class, 'auth'])->name('auth');
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
